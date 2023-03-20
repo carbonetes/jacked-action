@@ -1,0 +1,13 @@
+name: Jacked Scan
+description: Jacked provides organizations with a more comprehensive look at their application to take calculated actions and create a better security approach. Its primary purpose is to scan vulnerabilities to implement subsequent risk mitigation measures.
+author: Carbonetes
+inputs:
+  directory:
+    description: The path directory to scan.
+    required: true
+  fail-criteria:
+    description: 'Optionally specify the minimum vulnerability severity to trigger an "error".  Valid choices are "negligible", "low", "medium", "high" and "critical".'
+    required: false
+runs:
+  using: node16
+  main: index.js
