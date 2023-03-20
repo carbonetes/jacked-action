@@ -1,0 +1,27 @@
+{
+  "name": "jacked-action",
+  "version": "1.0.0",
+  "description": "Jacked provides organizations with a more comprehensive look at their application to take calculated actions and create a better security approach. Its primary purpose is to scan vulnerabilities to implement subsequent risk mitigation measures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sairen-carbonetes/jacked-action.git"
+  },
+  "author": "sairen",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sairen-carbonetes/jacked-action/issues"
+  },
+  "homepage": "https://github.com/sairen-carbonetes/jacked-action#readme",
+  "keywords": [
+    "GitHub",
+    "Actions"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/exec": "^1.1.1"
+  }
+}
