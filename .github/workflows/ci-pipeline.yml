@@ -28,6 +28,9 @@ jobs:
         run: |
           git config user.email "${{ secrets.EMAIL }}"
           git config user.name "${{ secrets.USERNAME }}"
+          git config --global credential.helper "store --file=$HOME/.git-credentials"
+          echo "https://github.com sairen-carbonetes:${{ secrets.ACCESS_TOKEN }}" >> $HOME/.git-credentials
+
           
       - name: Commit and Push Changes
         run: | 
