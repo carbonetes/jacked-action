@@ -2,7 +2,7 @@ name: Compile TypeScript and Commit Files to Pull Request
 on:
   pull_request:
     types:
-      - opened 
+      - opened
       - synchronize
  
 jobs:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Compile TypeScript and Commit Files to Pull Request
 
-    steps: 
+    steps:
       - uses: actions/checkout@v3
         with: 
           fetch-depth: 0
@@ -31,10 +31,19 @@ jobs:
           git config --global credential.helper "store --file=$HOME/.git-credentials"
           echo "https://github.com/${{ secrets.USERNAME }}:${{ secrets.ACCESS_TOKEN }}" >> $HOME/.git-credentials
 
-          
+      - name: Check for Changes
+        id: git-status
+        run: |
+          git status --porcelain
+          echo "CHANGES=$(if [[ -n "$(git status --porcelain)" ]]; then echo "true"; else echo "false"; fi)" >> $GITHUB_ENV
+
       - name: Commit and Push Changes
-        run: | 
-          git add .
-          git commit -m "chore: Compile TypeScript files"
-          git remote set-url origin "https://github.com/carbonetes/jacked-action.git"
-          git push origin HEAD:refs/heads/${{ github.head_ref }}
+        run: |
+          if [[ "${{ env.CHANGES }}" == "true" ]]; then
+            git add .
+            git commit -m "chore: Compile TypeScript files"
+            git remote set-url origin "https://github.com/carbonetes/jacked-action.git"
+            git push origin HEAD:refs/heads/${{ github.head_ref }}
+          else
+            echo "No changes to commit. Skipping commit and push steps."
+          fi
