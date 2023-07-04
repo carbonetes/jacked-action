@@ -1,4 +1,4 @@
-name: Compile TypeScript
+name: Compile TypeScript and Commit Files to Pull Request
 on:
   pull_request:
     types:
@@ -12,6 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set Up Git Config
+        run: |
+          git config user.email "${{ secrets.EMAIL }}"
+          git config user.name "${{ secrets.USERNAME }}"
 
       - name: Install Dependencies
         run: npm install
