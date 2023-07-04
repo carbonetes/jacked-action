@@ -24,6 +24,9 @@ jobs:
       - name: Compile TypeScript
         run: npx tsc --outDir src src/main.ts
 
+      - name: Checkout Pull Request Branch
+        run: git checkout ${{ github.head_ref }}
+
       - name: Set Up Git Config
         run: |
           git config user.email "${{ secrets.EMAIL }}"
@@ -31,10 +34,10 @@ jobs:
           git config --global credential.helper "store --file=$HOME/.git-credentials"
           echo "https://github.com/${{ secrets.USERNAME }}:${{ secrets.ACCESS_TOKEN }}" >> $HOME/.git-credentials
 
-          
       - name: Commit and Push Changes
         run: | 
           git add .
-          git commit -m "chore: Compile TypeScript files"
+          git commit -m "Compile TypeScript files"
           git remote set-url origin "https://github.com/carbonetes/jacked-action.git"
           git push origin HEAD:refs/heads/${{ github.head_ref }}
+
