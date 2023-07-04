@@ -4,21 +4,16 @@ on:
     types:
       - opened
       - synchronize
-
+ 
 jobs:
   publish:
     runs-on: ubuntu-latest
     name: Compile TypeScript and Commit Files to Pull Request
 
-    steps:
+    steps: 
       - uses: actions/checkout@v3
-        with:
+        with: 
           fetch-depth: 0
-
-      - name: Set Up Git Config
-        run: |
-          git config user.email "${{ secrets.EMAIL }}"
-          git config user.name "${{ secrets.USERNAME }}"
 
       - name: Install Dependencies
         run: npm install
@@ -27,10 +22,22 @@ jobs:
         run: npm install --save-dev @types/node
 
       - name: Compile TypeScript
-        run: npx tsc
+        run: npx tsc --outDir src src/main.ts
 
-      - name: Commit Changes
+      - name: Set Up Git Config
         run: |
+          git config user.email "${{ secrets.EMAIL }}"
+          git config user.name "${{ secrets.USERNAME }}"
+          git config --global credential.helper "store --file=$HOME/.git-credentials"
+          echo "https://github.com/${{ secrets.USERNAME }}:${{ secrets.ACCESS_TOKEN }}" >> $HOME/.git-credentials
+
+          
+      - name: Commit and Push Changes
+        run: | 
           git add .
-          git commit -m "Compile TypeScript"
-          git push
+          git commit -m "Compile TypeScript files"
+          git remote set-url origin "https://github.com/sairen-carbonetes/fork-jacked-action.git"
+          git push origin HEAD:${{ github.ref }}
+
+
+
