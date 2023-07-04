@@ -33,5 +33,7 @@ jobs:
         run: | 
           git add .
           git commit -m "Compile TypeScript files"
-          git remote add origin_with_token "https://${{ secrets.USERNAME }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ secrets.USERNAME }}/fork-jacked-action.git"
-          git push origin_with_token HEAD:${{ github.ref }}
+          git remote set-url origin "https://github.com/${{ secrets.USERNAME }}/fork-jacked-action.git"
+          git push origin HEAD:${{ github.ref }}
+
+
