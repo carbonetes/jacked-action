@@ -2,7 +2,7 @@ import * as https from 'https';
 import * as fs from 'fs';
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
-
+ 
 let directoryInput: string;
 let scanOption: string;
 let failCriteria: string;
