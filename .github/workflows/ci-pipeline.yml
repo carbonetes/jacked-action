@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Compile TypeScript and Commit Files to Pull Request
 
-    steps:
+    steps: 
       - uses: actions/checkout@v3
         with: 
           fetch-depth: 0
