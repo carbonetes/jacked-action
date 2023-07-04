@@ -1,6 +1,6 @@
 name: Compile TypeScript and Commit Files to Pull Request
 on:
-  pull_request:
+  pull_request: 
     types:
       - opened
       - synchronize
