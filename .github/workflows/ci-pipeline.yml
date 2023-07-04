@@ -15,11 +15,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set Up Git Config
-        run: |
-          git config user.email "${{ secrets.EMAIL }}"
-          git config user.name "${{ secrets.USERNAME }}"
-
       - name: Install Dependencies
         run: npm install
 
@@ -29,9 +24,14 @@ jobs:
       - name: Compile TypeScript
         run: npx tsc --outDir src src/main.ts
 
-      - name: Commit Changes
+      - name: Set Up Git Config
+        run: |
+          git config user.email "${{ secrets.EMAIL }}"
+          git config user.name "${{ secrets.USERNAME }}"
+          
+      - name: Commit and Push Changes
         run: |
           git add .
-          git commit -m "Compile TypeScript"
-          git push origin HEAD
+          git commit -m "Compile TypeScript files"
+          git push origin HEAD:${{ github.ref }}
 
