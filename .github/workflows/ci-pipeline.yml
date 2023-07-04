@@ -33,4 +33,5 @@ jobs:
         run: |
           git add .
           git commit -m "Compile TypeScript"
-          git push
+          git push origin HEAD
+
