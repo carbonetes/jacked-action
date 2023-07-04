@@ -1,4 +1,4 @@
-name: Compile TypeScript and Add Commit to Pull Request
+name: Compile TypeScript
 on:
   pull_request:
     types:
@@ -16,10 +16,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Set Up Git Config
-        run: |
-          git config user.name "${{ secrets.USERNAME }}"
-          git config user.email "${{ secrets.EMAIL }}"
+      - name: Install Type Declarations for Node.js
+        run: npm install --save-dev @types/node
 
       - name: Compile TypeScript
         run: npx tsc
