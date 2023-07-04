@@ -30,7 +30,7 @@ jobs:
           git config user.name "${{ secrets.USERNAME }}"
           
       - name: Commit and Push Changes
-        run: |
+        run: | 
           git add .
           git commit -m "Compile TypeScript files"
           git push origin HEAD:${{ github.ref }}
