@@ -8,7 +8,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    name: Publish GitHub Action
+    name: Compile TypeScript and Commit Files to Pull Request
 
     steps:
       - uses: actions/checkout@v3
