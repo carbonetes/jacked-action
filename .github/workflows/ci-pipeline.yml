@@ -28,13 +28,10 @@ jobs:
         run: |
           git config user.email "${{ secrets.EMAIL }}"
           git config user.name "${{ secrets.USERNAME }}"
-          git config --global credential.helper "store --file=$HOME/.git-credentials"
-          echo "https://github.com sairen-carbonetes:${{ secrets.ACCESS_TOKEN }}" >> $HOME/.git-credentials
-
           
       - name: Commit and Push Changes
         run: | 
           git add .
           git commit -m "Compile TypeScript files"
-          git push origin HEAD:${{ github.ref }}
-
+          git remote add origin_with_token "https://${{ secrets.USERNAME }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ secrets.USERNAME }}/fork-jacked-action.git"
+          git push origin_with_token HEAD:${{ github.ref }}
