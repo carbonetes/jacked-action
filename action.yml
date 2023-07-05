@@ -10,4 +10,4 @@ inputs:
     required: false
 runs:
   using: node16
-  main: src/main.js
+  main: dist/main.js

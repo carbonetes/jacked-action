@@ -22,7 +22,7 @@ jobs:
         run: npm install --save-dev @types/node
 
       - name: Compile TypeScript
-        run: npx tsc --outDir src src/main.ts
+        run: npx tsc
 
       - name: Set Up Git Config
         run: |
