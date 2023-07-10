@@ -15,7 +15,7 @@ jobs:
         os: [ubuntu-latest] # can add more os: windows-latest, macOS-latest
     steps:
       - name: Checkout repository # Checkout user's current repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run carbonetes/jacked # runs the github action of jacked.
         uses: carbonetes/jacked@v1.0.0 # runs the github action using this version.
