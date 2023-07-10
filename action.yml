@@ -17,7 +17,7 @@ inputs:
     required: false
     default: "true"
   skipDbUpdate:
-    description: 'Skip Jacked Vulnerability Update'
+    description: 'Skip Jacked Vulnerability Database Update'
     required: false
     default: "false"
   ignorePackageNames:

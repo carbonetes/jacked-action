@@ -20,9 +20,13 @@ jobs:
       - name: Run carbonetes/jacked # runs the github action of jacked.
         uses: carbonetes/jacked@v1.0.0 # runs the github action using this version.
         with: # user’s input reference for scanning options, results that jacked-action supported.
-          directory: "."
-          fail-criteria: "" # user's input severity reference to be considered as failed-build when detected from the scan result.
-
+          scanName: "." # Image name, Tar File Path, or Directory Path. Required*
+          scanType: "." # Type "image", "tar", or "directory". Required*
+          fail-criteria: "" # Optionally specify the minimum vulnerability severity to trigger an "error".  Valid choices are "negligible", "low", "medium", "high" and "critical". Required*
+          skipBuildFail: # Set build is always success, ignore assessment result.
+          skipDbUpdate: # Skip Jacked Vulnerability Database Update.
+          ignorePackageNames: # Ignore Package names when scanning... e.g. input: dpkg,tar,bash,...
+          ignoreCves: # Ignore CVES when scanning... e.g. input: CVE-2022-1271,CVE-2022-3715,CVE-2022-1664,...
 ```
 
 ## License
