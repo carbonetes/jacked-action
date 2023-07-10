@@ -1,4 +1,4 @@
-name: Jacked Scan
+name: Jacked Vulnerability Scanner
 description: Jacked Vulnerability Scanner - GitHub Action.
 author: Carbonetes
 inputs:
