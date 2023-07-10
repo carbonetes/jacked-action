@@ -1,5 +1,13 @@
 
-# jacked-action
+<p align="center">
+<img src="assets/jacked-logo.svg">
+</p>
+
+[![Carbonetes-Jacked](https://img.shields.io/badge/carbonetes-jacked-%232f7ea3)](https://github.com/carbonetes/jacked)
+[![Jacked-Action](https://img.shields.io/badge/jacked-github--action--plugin-%232f7ea3)](https://github.com/marketplace/actions/jacked-scan)
+# GitHub Action: Jacked
+
+
 Jacked provides organizations with a more comprehensive look at their application to take calculated actions and create a better security approach. Its primary purpose is to scan vulnerabilities to implement subsequent risk mitigation measures. GitHub Action CICD Integration.
 
 ## Directory Scanning
