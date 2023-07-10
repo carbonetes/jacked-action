@@ -1,8 +1,9 @@
-import * as core from '@actions/core'
-import * as exec from '@actions/exec';
+
 // File Import
 import { Inputs } from './inputs';
 import { Keywords } from './util/keywords';
+import { exit } from 'process';
+import { executeCommand } from './execute';
 
 // Class
 const userInputs = new Inputs();
@@ -47,7 +48,13 @@ export async function constructArguments(scanOption: string) {
     }
 
     command = args.join(' ');
+    let failureMessage = `Error running '${keywords.JACKED}' command`;
 
     // Execute Binary
-    await exec.exec(command);
+    try {
+        executeCommand(command, failureMessage, userInputs.skipBuildFail);
+    } catch (error) {
+        console.error(error);
+        exit(1);
+    }
 }
