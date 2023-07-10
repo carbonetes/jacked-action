@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="assets/jacked-logo.svg">
+<img src="assets/logo.png">
 </p>
 
 [![Carbonetes-Jacked](https://img.shields.io/badge/carbonetes-jacked-%232f7ea3)](https://github.com/carbonetes/jacked)
