@@ -19,5 +19,3 @@ export function checkSeverityInput(failCriteria: string): void {
         }
     }
 }
-
-
