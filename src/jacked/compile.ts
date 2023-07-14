@@ -47,6 +47,10 @@ export async function constructArguments(scanOption: string) {
         args.push(keywords.SKIPDBUPDATE);
     }
 
+    // Save output file
+    args.push(keywords.FILE);
+    args.push("jacked_result");
+
     command = args.join(' ');
     let failureMessage = `Error running '${keywords.JACKED}' command`;
 
