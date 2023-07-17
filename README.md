@@ -48,7 +48,7 @@ _\* = required inputs._
 | Recommendation               | Show available recommendation to fix vulnerabilities. |
 | Assessment                   | Based on fail-criteria severity. Pass-Fail Assessment. |
 
-## Directory Scanning
+## Pipeline Usage
 
 ```yaml
 name: Jacked Action
@@ -64,7 +64,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run carbonetes/jacked # runs the github action of jacked.
-        uses: carbonetes/jacked@v1.0.0 # runs the github action using this version.
+        uses: carbonetes/jacked@v1.2.0 # runs the github action using this version.
         with: # user’s input reference for scanning options, results that jacked-action supported.
           scan-name: "." # Image name, Tar File Path, or Directory Path. Required*
           scan-type: "." # Type "image", "tar", or "directory". Required*
