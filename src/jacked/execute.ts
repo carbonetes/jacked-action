@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { exit } from 'process';
 import { exec, ExecOptions } from 'child_process';
 import { Styles, Common, Strings } from '../jacked/styles'
+import { uploadFile } from './upload-file';
 
 export function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string): void {
 
@@ -34,13 +35,13 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
     const childProcess = exec(`${jackedBinaryPath} ${command}`, execOptions);
     childProcess.stdout?.on('data', (data) => {
         const log = data.toString().trim();
-        console.log(data);
+        console.log(log);
     });
 
     childProcess.stderr?.on('data', (data) => {
         // Ignore stderr output
         const log = data.toString().trim();
-        console.log(data);
+        console.log(log);
     });
 
     childProcess.on('error', (error) => {
@@ -60,6 +61,7 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
                 Common.PASSED +
                 Styles.Reset
             );
+            uploadFile();
             exit(0);
 
         } else {
@@ -89,6 +91,7 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
                 exitStatus = 0;
             }
         }
+        uploadFile();
         exit(exitStatus);
     });
 }

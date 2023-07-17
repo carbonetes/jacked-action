@@ -48,7 +48,7 @@ export async function constructArguments() {
 
     // Save output file
     args.push(keywords.FILE);
-    args.push("jacked_result");
+    args.push(keywords.FILENAME);
 
     command = args.join(' ');
     let failureMessage = `Error running '${keywords.JACKED}' command`;
@@ -56,7 +56,7 @@ export async function constructArguments() {
     // Execute Binary
     console.log(`jacked ${command}`);
     try {
-        executeCommand(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
+        executeCommand(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria)
     } catch (error) {
         console.error(error);
         exit(1);

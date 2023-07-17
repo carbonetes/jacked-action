@@ -41,7 +41,7 @@ async function constructArguments() {
     }
     // Save output file
     args.push(keywords.FILE);
-    args.push("jacked_result");
+    args.push(keywords.FILENAME);
     command = args.join(' ');
     let failureMessage = `Error running '${keywords.JACKED}' command`;
     // Execute Binary

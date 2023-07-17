@@ -15,6 +15,7 @@ class Keywords {
         this.SKIPDBUPDATE = "--skip-db-update";
         this.IGNOREPACKAGENAMES = "--ignore-package-names";
         this.IGNORECVES = "--ignore-cves";
+        this.FILENAME = "jacked_result";
         // Severities
         this.SEVERITY_TYPE = ["unknown", "negligible", "low", "medium", "high", "critical"];
     }
