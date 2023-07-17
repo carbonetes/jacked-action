@@ -27,7 +27,7 @@ function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
         maxBuffer: 1024 * 1024 * 250,
         shell: '/bin/bash',
     };
-    const childProcess = (0, child_process_1.exec)(`${command}`, execOptions);
+    const childProcess = (0, child_process_1.exec)(`${jackedBinaryPath} ${command}`, execOptions);
     (_a = childProcess.stdout) === null || _a === void 0 ? void 0 : _a.on('data', (data) => {
         const log = data.toString().trim();
         console.log(data);

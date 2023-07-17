@@ -31,7 +31,7 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
         shell: '/bin/bash',
     };
 
-    const childProcess = exec(`${command}`, execOptions);
+    const childProcess = exec(`${jackedBinaryPath} ${command}`, execOptions);
     childProcess.stdout?.on('data', (data) => {
         const log = data.toString().trim();
         console.log(data);

@@ -17,7 +17,6 @@ export async function constructArguments() {
 
     console.log("Scan Type User-input: " + userInputs.scanType);
     // CI MODE
-    args.push(keywords.JACKED);
     args.push(keywords.CIMODE);
 
     switch (userInputs.scanType) {
@@ -55,7 +54,7 @@ export async function constructArguments() {
     let failureMessage = `Error running '${keywords.JACKED}' command`;
 
     // Execute Binary
-    console.log(`${command}`);
+    console.log(`jacked ${command}`);
     try {
         executeCommand(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
     } catch (error) {
