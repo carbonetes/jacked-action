@@ -24,6 +24,20 @@ Jacked provides organizations with a more comprehensive look at their applicatio
 
 _\* = required inputs._
 
+## File Permission
+.jackedci.yaml file needs to be permitted(read, write, executable). To work with the following features:
+### Ignore Policy
+- ignore-package-names
+- ignore-cves
+## File Path `.jackedci.yaml`
+### Linux / MacOS File Path
+```
+/root/.jackedci.yaml
+```
+### Windows OS File Path
+```
+{username}/.jackedci.yaml
+```
 
 ## Output Description
 
