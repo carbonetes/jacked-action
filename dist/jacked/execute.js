@@ -30,12 +30,12 @@ function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
     const childProcess = (0, child_process_1.exec)(`${jackedBinaryPath} ${command}`, execOptions);
     (_a = childProcess.stdout) === null || _a === void 0 ? void 0 : _a.on('data', (data) => {
         const log = data.toString().trim();
-        console.log(log);
+        console.log(data);
     });
     (_b = childProcess.stderr) === null || _b === void 0 ? void 0 : _b.on('data', (data) => {
         // Ignore stderr output
         const log = data.toString().trim();
-        console.log(log);
+        console.log(data);
     });
     childProcess.on('error', (error) => {
         console.error(`Error running 'jacked' command: ${error.message}`);

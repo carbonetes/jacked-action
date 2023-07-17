@@ -34,13 +34,13 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
     const childProcess = exec(`${jackedBinaryPath} ${command}`, execOptions);
     childProcess.stdout?.on('data', (data) => {
         const log = data.toString().trim();
-        console.log(log);
+        console.log(data);
     });
 
     childProcess.stderr?.on('data', (data) => {
         // Ignore stderr output
         const log = data.toString().trim();
-        console.log(log);
+        console.log(data);
     });
 
     childProcess.on('error', (error) => {
