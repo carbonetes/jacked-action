@@ -7,6 +7,7 @@ import { Styles, Common, Strings } from '../jacked/styles'
 
 export function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string): void {
 
+    console.log(`jacked ${command}`);
     const jackedBinaryPath = path.join('./bin/jacked');
 
     // Check if the 'jacked' binary file exists

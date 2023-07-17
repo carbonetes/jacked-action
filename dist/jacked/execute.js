@@ -8,6 +8,7 @@ const child_process_1 = require("child_process");
 const styles_1 = require("../jacked/styles");
 function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
     var _a, _b;
+    console.log(`jacked ${command}`);
     const jackedBinaryPath = path.join('./bin/jacked');
     // Check if the 'jacked' binary file exists
     if (!fs.existsSync(jackedBinaryPath) || !fs.lstatSync(jackedBinaryPath).isFile()) {

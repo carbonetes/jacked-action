@@ -15,7 +15,7 @@ export async function constructArguments() {
     const args: string[] = [];
     let command: string | undefined;
 
-    console.log('Scan Type User-input: ' + userInputs.scanType);
+    console.log("Scan Type User-input: " + userInputs.scanType);
     // CI MODE
     args.push(keywords.JACKEDCOMMAND);
     args.push(keywords.CIMODE);

@@ -12,7 +12,7 @@ const keywords = new keywords_1.Keywords();
 async function constructArguments() {
     const args = [];
     let command;
-    console.log('Scan Type User-input: ' + userInputs.scanType);
+    console.log("Scan Type User-input: " + userInputs.scanType);
     // CI MODE
     args.push(keywords.JACKEDCOMMAND);
     args.push(keywords.CIMODE);
