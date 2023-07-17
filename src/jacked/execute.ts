@@ -9,7 +9,7 @@ import { Keywords } from './util/keywords';
 
 const keywords = new Keywords();
 
-export async function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string): Promise<any> {
+export function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string): void {
     const jackedBinaryPath = path.join('./bin/jacked');
 
     // Check if the 'jacked' binary file exists
@@ -63,7 +63,7 @@ export async function executeCommand(command: string, failureMessage: string, sk
                 Common.PASSED +
                 Styles.Reset
             );
-            return 0;
+            exit(0);
 
         } else {
             // Display fail
@@ -93,6 +93,6 @@ export async function executeCommand(command: string, failureMessage: string, sk
             }
         }
         uploadFile(keywords.FILENAME);
-        return exitStatus;
+        exit(exitStatus);
     });
 }

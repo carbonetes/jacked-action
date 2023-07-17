@@ -9,7 +9,7 @@ const styles_1 = require("../jacked/styles");
 const upload_file_1 = require("./upload-file");
 const keywords_1 = require("./util/keywords");
 const keywords = new keywords_1.Keywords();
-async function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
+function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
     var _a, _b;
     const jackedBinaryPath = path.join('./bin/jacked');
     // Check if the 'jacked' binary file exists
@@ -53,7 +53,7 @@ async function executeCommand(command, failureMessage, skipBuildFail, failCriter
                 styles_1.Strings.JACKEDASSESSMENT +
                 styles_1.Common.PASSED +
                 styles_1.Styles.Reset);
-            return 0;
+            (0, process_1.exit)(0);
         }
         else {
             // Display fail
@@ -78,7 +78,7 @@ async function executeCommand(command, failureMessage, skipBuildFail, failCriter
             }
         }
         (0, upload_file_1.uploadFile)(keywords.FILENAME);
-        return exitStatus;
+        (0, process_1.exit)(exitStatus);
     });
 }
 exports.executeCommand = executeCommand;

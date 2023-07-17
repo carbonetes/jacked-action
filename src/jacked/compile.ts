@@ -52,9 +52,7 @@ export async function constructArguments() {
     // Execute Binary
     console.log(`jacked ${command}`);
     try {
-        let exitCode = await executeCommand(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
-        
-        exit(exitCode);
+        executeCommand(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
     } catch (error) {
         console.error(error);
         exit(1);
