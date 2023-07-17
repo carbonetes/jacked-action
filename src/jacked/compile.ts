@@ -10,17 +10,17 @@ const userInputs = new Inputs();
 const keywords = new Keywords();
 
 
-export async function constructArguments(scanOption: string) {
+export async function constructArguments() {
 
     const args: string[] = [];
     let command: string | undefined;
 
-    console.log('Scan Type User-input: ' + scanOption);
+    console.log('Scan Type User-input: ' + userInputs.scanType);
     // CI MODE
     args.push(keywords.JACKEDCOMMAND);
     args.push(keywords.CIMODE);
 
-    switch (scanOption) {
+    switch (userInputs.scanType) {
         case "tar":
             console.log('Performing tar scan');
             args.push(keywords.TAR);

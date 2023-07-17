@@ -7,9 +7,6 @@ const core = require("@actions/core");
 const exec = require("@actions/exec");
 // File Import
 const compile_1 = require("./compile");
-const inputs_1 = require("./inputs");
-// Class
-const userInputs = new inputs_1.Inputs();
 async function installJacked() {
     try {
         const options = {
@@ -27,7 +24,7 @@ async function installJacked() {
                 await exec.exec('chmod', ['+x', './install.sh']);
                 await exec.exec('./install.sh');
                 core.info('Jacked has been installed');
-                await (0, compile_1.constructArguments)(userInputs.scanType);
+                await (0, compile_1.constructArguments)();
             });
         });
         request.on('error', error => {
