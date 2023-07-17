@@ -7,8 +7,8 @@ export class Inputs {
     failCriteria: string;
     ignoreCves: string;
     ignorePackageNames: string;
-    skipBuildFail: boolean;
-    skipDbUpdate: boolean;
+    skipBuildFail: string;
+    skipDbUpdate: string;
 
     constructor() {
         this.scanName = core.getInput('scan-name');
@@ -16,8 +16,8 @@ export class Inputs {
         this.failCriteria = core.getInput('fail-criteria').toLowerCase();
         this.ignoreCves = core.getInput('ignore-cves');
         this.ignorePackageNames = core.getInput('ignore-package-names');
-        this.skipBuildFail = core.getBooleanInput('skipBuildFail');
-        this.skipDbUpdate = core.getBooleanInput('skipDbUpdate');
+        this.skipBuildFail = core.getInput('skipBuildFail');
+        this.skipDbUpdate = core.getInput('skipDbUpdate');
         
     }
 

@@ -36,9 +36,12 @@ async function constructArguments(scanOption) {
     args.push(keywords.FAILCRITERIA);
     args.push(userInputs.failCriteria);
     // Skip DB Update
-    if (userInputs.skipDbUpdate) {
+    if (userInputs.skipDbUpdate == "true") {
         args.push(keywords.SKIPDBUPDATE);
     }
+    // Save output file
+    args.push(keywords.FILE);
+    args.push("jacked_result");
     command = args.join(' ');
     let failureMessage = `Error running '${keywords.JACKED}' command`;
     // Execute Binary
