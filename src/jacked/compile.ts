@@ -56,7 +56,7 @@ export async function constructArguments(scanOption: string) {
 
     // Execute Binary
     try {
-        executeCommand(command, failureMessage, userInputs.skipBuildFail);
+        executeCommand(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
     } catch (error) {
         console.error(error);
         exit(1);

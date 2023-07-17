@@ -46,7 +46,7 @@ async function constructArguments(scanOption) {
     let failureMessage = `Error running '${keywords.JACKED}' command`;
     // Execute Binary
     try {
-        (0, execute_1.executeCommand)(command, failureMessage, userInputs.skipBuildFail);
+        (0, execute_1.executeCommand)(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
     }
     catch (error) {
         console.error(error);
