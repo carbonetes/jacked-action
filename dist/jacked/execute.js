@@ -6,8 +6,7 @@ const fs = require("fs");
 const process_1 = require("process");
 const child_process_1 = require("child_process");
 const styles_1 = require("../jacked/styles");
-const upload_file_1 = require("./upload-file");
-async function executeCommand(command, failureMessage, skipBuildFail, failCriteria, filename) {
+async function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
     var _a, _b;
     const jackedBinaryPath = path.join('./bin/jacked');
     // Check if the 'jacked' binary file exists
@@ -38,9 +37,6 @@ async function executeCommand(command, failureMessage, skipBuildFail, failCriter
         const log = data.toString().trim();
         console.log(log);
     });
-    // Upload Saved output file *****
-    (0, upload_file_1.uploadFile)(filename);
-    // ********
     childProcess.on('error', (error) => {
         console.error(`Error running 'jacked' command: ${error.message}`);
         (0, process_1.exit)(1);

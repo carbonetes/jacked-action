@@ -13,7 +13,6 @@ const keywords = new keywords_1.Keywords();
 async function constructArguments() {
     const args = [];
     let command;
-    console.log("Scan Type User-input: " + userInputs.scanType);
     // CI MODE
     args.push(keywords.CIMODE);
     switch (userInputs.scanType) {
@@ -48,7 +47,7 @@ async function constructArguments() {
     // Execute Binary
     console.log(`jacked ${command}`);
     try {
-        let exitCode = await (0, execute_1.executeCommand)(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria, keywords.FILENAME);
+        let exitCode = await (0, execute_1.executeCommand)(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
         await (0, upload_file_1.uploadFile)(keywords.FILENAME);
         (0, process_1.exit)(exitCode);
     }
