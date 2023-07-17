@@ -4,7 +4,7 @@ exports.uploadFile = void 0;
 const artifact = require("@actions/artifact");
 function uploadFile(filename) {
     if (filename === null || filename === '')
-        return 'No saved file uploaded';
+        return;
     const client = artifact.create();
     const files = [filename];
     const rootDir = ".";

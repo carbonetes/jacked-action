@@ -3,8 +3,9 @@ import * as fs from 'fs';
 import { exit } from 'process';
 import { exec, ExecOptions } from 'child_process';
 import { Styles, Common, Strings } from '../jacked/styles'
+import { uploadFile } from './upload-file';
 
-export function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string): void {
+export function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string, filename: string): void {
 
     const jackedBinaryPath = path.join('./bin/jacked');
 
@@ -41,6 +42,10 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
         const log = data.toString().trim();
         console.log(log);
     });
+
+    // Upload Saved output file *****
+    uploadFile(filename);
+    // ********
 
     childProcess.on('error', (error) => {
         console.error(`Error running 'jacked' command: ${error.message}`);

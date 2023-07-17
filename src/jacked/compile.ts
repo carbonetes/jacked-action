@@ -4,7 +4,6 @@ import { Inputs } from './inputs';
 import { Keywords } from './util/keywords';
 import { exit } from 'process';
 import { executeCommand } from './execute';
-import { uploadFile } from './upload-file';
 
 // Class
 const userInputs = new Inputs();
@@ -57,8 +56,7 @@ export async function constructArguments() {
     // Execute Binary
     console.log(`jacked ${command}`);
     try {
-        executeCommand(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
-        uploadFile(keywords.FILENAME);
+        executeCommand(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria, keywords.FILENAME);
     } catch (error) {
         console.error(error);
         exit(1);
