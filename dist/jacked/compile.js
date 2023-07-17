@@ -36,7 +36,7 @@ async function constructArguments(scanOption) {
     args.push(keywords.FAILCRITERIA);
     args.push(userInputs.failCriteria);
     // Skip DB Update
-    if (userInputs.skipDbUpdate == "true") {
+    if (userInputs.skipDbUpdate) {
         args.push(keywords.SKIPDBUPDATE);
     }
     // Save output file
