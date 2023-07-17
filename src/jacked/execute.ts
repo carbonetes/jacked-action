@@ -39,6 +39,8 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
 
     childProcess.stderr?.on('data', (data) => {
         // Ignore stderr output
+        const log = data.toString().trim();
+        console.log(log);
     });
 
     childProcess.on('error', (error) => {
