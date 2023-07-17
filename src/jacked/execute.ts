@@ -1,16 +1,16 @@
-import * as path from 'path';
 import * as fs from 'fs';
 import { exit } from 'process';
 import { exec, ExecOptions } from 'child_process';
 import { Styles, Common, Strings } from '../jacked/styles'
 import { uploadFile } from './upload-file';
 import { Keywords } from './util/keywords';
+import { checkPermission } from './permission';
 
 
 const keywords = new Keywords();
 
 export function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string): void {
-    const jackedBinaryPath = path.join('./bin/jacked');
+    const jackedBinaryPath = keywords.JACKEDBINARYFILEPATH;
 
     // Check if the 'jacked' binary file exists
     if (!fs.existsSync(jackedBinaryPath) || !fs.lstatSync(jackedBinaryPath).isFile()) {
@@ -23,10 +23,7 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
     const isExecutable = (permissions & fs.constants.S_IXUSR) !== 0;
 
     // Set executable permission if necessary
-    if (!isExecutable) {
-        fs.chmodSync(jackedBinaryPath, '755');
-        console.log(`Executable permission set for 'jacked' binary`);
-    }
+    checkPermission();
 
     const execOptions: ExecOptions = {
         cwd: '.',

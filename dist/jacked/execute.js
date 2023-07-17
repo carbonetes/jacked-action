@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.executeCommand = void 0;
-const path = require("path");
 const fs = require("fs");
 const process_1 = require("process");
 const child_process_1 = require("child_process");
 const styles_1 = require("../jacked/styles");
 const upload_file_1 = require("./upload-file");
 const keywords_1 = require("./util/keywords");
+const permission_1 = require("./permission");
 const keywords = new keywords_1.Keywords();
 function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
     var _a, _b;
-    const jackedBinaryPath = path.join('./bin/jacked');
+    const jackedBinaryPath = keywords.JACKEDBINARYFILEPATH;
     // Check if the 'jacked' binary file exists
     if (!fs.existsSync(jackedBinaryPath) || !fs.lstatSync(jackedBinaryPath).isFile()) {
         console.error(`${failureMessage}: 'jacked' binary not found`);
@@ -21,10 +21,7 @@ function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
     const permissions = fs.statSync(jackedBinaryPath).mode;
     const isExecutable = (permissions & fs.constants.S_IXUSR) !== 0;
     // Set executable permission if necessary
-    if (!isExecutable) {
-        fs.chmodSync(jackedBinaryPath, '755');
-        console.log(`Executable permission set for 'jacked' binary`);
-    }
+    (0, permission_1.checkPermission)();
     const execOptions = {
         cwd: '.',
         maxBuffer: 1024 * 1024 * 250,
