@@ -12,7 +12,7 @@ export class Keywords {
     SKIPDBUPDATE = "--skip-db-update";
     IGNOREPACKAGENAMES = "--ignore-package-names";
     IGNORECVES = "--ignore-cves";
-    FILENAME = "jacked_result";
+    FILENAME = "jacked_result.txt";
     // Severities
     SEVERITY_TYPE: string[] = ["unknown", "negligible", "low", "medium", "high", "critical"];
 }

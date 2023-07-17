@@ -5,8 +5,7 @@ import { exec, ExecOptions } from 'child_process';
 import { Styles, Common, Strings } from '../jacked/styles'
 import { uploadFile } from './upload-file';
 
-export function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string, filename: string): void {
-
+export async function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string, filename: string): Promise<any> {
     const jackedBinaryPath = path.join('./bin/jacked');
 
     // Check if the 'jacked' binary file exists
@@ -64,7 +63,7 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
                 Common.PASSED +
                 Styles.Reset
             );
-            exit(0);
+            return 0;
 
         } else {
             // Display fail
@@ -93,6 +92,6 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
                 exitStatus = 0;
             }
         }
-        exit(exitStatus);
+        return exitStatus;
     });
 }

@@ -7,7 +7,7 @@ const process_1 = require("process");
 const child_process_1 = require("child_process");
 const styles_1 = require("../jacked/styles");
 const upload_file_1 = require("./upload-file");
-function executeCommand(command, failureMessage, skipBuildFail, failCriteria, filename) {
+async function executeCommand(command, failureMessage, skipBuildFail, failCriteria, filename) {
     var _a, _b;
     const jackedBinaryPath = path.join('./bin/jacked');
     // Check if the 'jacked' binary file exists
@@ -54,7 +54,7 @@ function executeCommand(command, failureMessage, skipBuildFail, failCriteria, fi
                 styles_1.Strings.JACKEDASSESSMENT +
                 styles_1.Common.PASSED +
                 styles_1.Styles.Reset);
-            (0, process_1.exit)(0);
+            return 0;
         }
         else {
             // Display fail
@@ -78,7 +78,7 @@ function executeCommand(command, failureMessage, skipBuildFail, failCriteria, fi
                 exitStatus = 0;
             }
         }
-        (0, process_1.exit)(exitStatus);
+        return exitStatus;
     });
 }
 exports.executeCommand = executeCommand;
