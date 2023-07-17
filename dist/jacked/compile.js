@@ -38,6 +38,16 @@ async function constructArguments() {
     if (userInputs.skipDbUpdate) {
         args.push(keywords.SKIPDBUPDATE);
     }
+    // Ignore Package names
+    if (userInputs.ignorePackageNames != "") {
+        args.push(keywords.IGNOREPACKAGENAMES);
+        args.push(userInputs.ignorePackageNames);
+    }
+    // Ignore CVEs
+    if (userInputs.ignoreCves != "") {
+        args.push(keywords.IGNORECVES);
+        args.push(userInputs.ignoreCves);
+    }
     // Save output file
     args.push(keywords.FILE);
     args.push(keywords.FILENAME);
