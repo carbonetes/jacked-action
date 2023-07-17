@@ -6,6 +6,7 @@ const inputs_1 = require("./inputs");
 const keywords_1 = require("./util/keywords");
 const process_1 = require("process");
 const execute_1 = require("./execute");
+const upload_file_1 = require("./upload-file");
 // Class
 const userInputs = new inputs_1.Inputs();
 const keywords = new keywords_1.Keywords();
@@ -48,6 +49,7 @@ async function constructArguments() {
     console.log(`jacked ${command}`);
     try {
         (0, execute_1.executeCommand)(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
+        (0, upload_file_1.uploadFile)(keywords.FILENAME);
     }
     catch (error) {
         console.error(error);

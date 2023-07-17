@@ -1,10 +1,8 @@
-import * as core from '@actions/core';
 import * as path from 'path';
 import * as fs from 'fs';
 import { exit } from 'process';
 import { exec, ExecOptions } from 'child_process';
 import { Styles, Common, Strings } from '../jacked/styles'
-import { uploadFile } from './upload-file';
 
 export function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string): void {
 
@@ -61,7 +59,6 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
                 Common.PASSED +
                 Styles.Reset
             );
-            uploadFile();
             exit(0);
 
         } else {
@@ -91,7 +88,6 @@ export function executeCommand(command: string, failureMessage: string, skipBuil
                 exitStatus = 0;
             }
         }
-        uploadFile();
         exit(exitStatus);
     });
 }
