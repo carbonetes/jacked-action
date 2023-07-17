@@ -14,7 +14,7 @@ async function constructArguments() {
     let command;
     console.log("Scan Type User-input: " + userInputs.scanType);
     // CI MODE
-    args.push(keywords.JACKEDCOMMAND);
+    args.push(keywords.JACKED);
     args.push(keywords.CIMODE);
     switch (userInputs.scanType) {
         case "tar":
@@ -46,6 +46,7 @@ async function constructArguments() {
     command = args.join(' ');
     let failureMessage = `Error running '${keywords.JACKED}' command`;
     // Execute Binary
+    console.log(`${command}`);
     try {
         (0, execute_1.executeCommand)(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
     }
