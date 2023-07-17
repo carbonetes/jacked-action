@@ -6,12 +6,12 @@ const core = require("@actions/core");
 const artifact = require("@actions/artifact");
 const keywords = new keywords_1.Keywords();
 function uploadFile() {
-    let sbomFile = core.getInput(keywords.FILENAME);
-    if (sbomFile === null || sbomFile === '')
-        return;
+    let file = core.getInput(keywords.FILENAME);
+    if (file === null || file === '')
+        return 'No saved file uploaded';
     const client = artifact.create();
-    const files = [sbomFile];
+    const files = [file];
     const rootDir = ".";
-    client.uploadArtifact(sbomFile, files, rootDir);
+    client.uploadArtifact(file, files, rootDir);
 }
 exports.uploadFile = uploadFile;
