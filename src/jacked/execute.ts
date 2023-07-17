@@ -4,6 +4,10 @@ import { exit } from 'process';
 import { exec, ExecOptions } from 'child_process';
 import { Styles, Common, Strings } from '../jacked/styles'
 import { uploadFile } from './upload-file';
+import { Keywords } from './util/keywords';
+
+
+const keywords = new Keywords();
 
 export async function executeCommand(command: string, failureMessage: string, skipBuildFail: boolean, failCriteria: string): Promise<any> {
     const jackedBinaryPath = path.join('./bin/jacked');
@@ -88,6 +92,7 @@ export async function executeCommand(command: string, failureMessage: string, sk
                 exitStatus = 0;
             }
         }
+        uploadFile(keywords.FILENAME);
         return exitStatus;
     });
 }

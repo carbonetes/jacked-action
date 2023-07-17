@@ -6,6 +6,9 @@ const fs = require("fs");
 const process_1 = require("process");
 const child_process_1 = require("child_process");
 const styles_1 = require("../jacked/styles");
+const upload_file_1 = require("./upload-file");
+const keywords_1 = require("./util/keywords");
+const keywords = new keywords_1.Keywords();
 async function executeCommand(command, failureMessage, skipBuildFail, failCriteria) {
     var _a, _b;
     const jackedBinaryPath = path.join('./bin/jacked');
@@ -74,6 +77,7 @@ async function executeCommand(command, failureMessage, skipBuildFail, failCriter
                 exitStatus = 0;
             }
         }
+        (0, upload_file_1.uploadFile)(keywords.FILENAME);
         return exitStatus;
     });
 }
