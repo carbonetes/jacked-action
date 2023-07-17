@@ -4,10 +4,6 @@ import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 // File Import
 import { constructArguments } from './compile';
-import { Inputs } from './inputs';
-
-// Class
-const userInputs = new Inputs();
 
 export async function installJacked() {
     try {
@@ -27,7 +23,7 @@ export async function installJacked() {
                 await exec.exec('chmod', ['+x', './install.sh']);
                 await exec.exec('./install.sh');
                 core.info('Jacked has been installed');
-                await constructArguments(userInputs.scanType);
+                await constructArguments();
             });
         });
 

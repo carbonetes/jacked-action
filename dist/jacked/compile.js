@@ -9,13 +9,12 @@ const execute_1 = require("./execute");
 // Class
 const userInputs = new inputs_1.Inputs();
 const keywords = new keywords_1.Keywords();
-async function constructArguments(scanOption) {
+async function constructArguments() {
     const args = [];
     let command;
     // CI MODE
-    args.push(keywords.JACKEDCOMMAND);
     args.push(keywords.CIMODE);
-    switch (scanOption) {
+    switch (userInputs.scanType) {
         case "tar":
             console.log('Performing tar scan');
             args.push(keywords.TAR);
@@ -39,11 +38,25 @@ async function constructArguments(scanOption) {
     if (userInputs.skipDbUpdate) {
         args.push(keywords.SKIPDBUPDATE);
     }
+    // Ignore Package names
+    if (userInputs.ignorePackageNames != "") {
+        args.push(keywords.IGNOREPACKAGENAMES);
+        args.push(userInputs.ignorePackageNames);
+    }
+    // Ignore CVEs
+    if (userInputs.ignoreCves != "") {
+        args.push(keywords.IGNORECVES);
+        args.push(userInputs.ignoreCves);
+    }
+    // Save output file
+    args.push(keywords.FILE);
+    args.push(keywords.FILENAME);
     command = args.join(' ');
     let failureMessage = `Error running '${keywords.JACKED}' command`;
     // Execute Binary
+    console.log(`jacked ${command}`);
     try {
-        (0, execute_1.executeCommand)(command, failureMessage, userInputs.skipBuildFail);
+        (0, execute_1.executeCommand)(command, failureMessage, userInputs.skipBuildFail, userInputs.failCriteria);
     }
     catch (error) {
         console.error(error);

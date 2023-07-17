@@ -16,8 +16,8 @@ export class Inputs {
         this.failCriteria = core.getInput('fail-criteria').toLowerCase();
         this.ignoreCves = core.getInput('ignore-cves');
         this.ignorePackageNames = core.getInput('ignore-package-names');
-        this.skipBuildFail = core.getBooleanInput('skipBuildFail');
-        this.skipDbUpdate = core.getBooleanInput('skipDbUpdate');
+        this.skipBuildFail = core.getBooleanInput('skip-build-fail');
+        this.skipDbUpdate = core.getBooleanInput('skip-db-update');
         
     }
 

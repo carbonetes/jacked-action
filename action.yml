@@ -2,28 +2,27 @@ name: Jacked Vulnerability Scanner
 description: Jacked Vulnerability Scanner - GitHub Action.
 author: Carbonetes
 inputs:
-  scanName:
+  scan-name:
     description: 'Image name, Tar File Path, or Directory Path.'
     required: true
-  scanType:
+  scan-type:
     description: 'Type "image", "tar", or "directory".'
     required: true
-    default: "image"
   fail-criteria:
     description: 'Optionally specify the minimum vulnerability severity to trigger an "error".  Valid choices are "negligible", "low", "medium", "high" and "critical".'
     required: false
-  skipBuildFail:
+  skip-build-fail:
     description: 'Set build is always success, ignore assessment result.'
     required: false
-    default: "true"
-  skipDbUpdate:
+    default: "false"
+  skip-db-update:
     description: 'Skip Jacked Vulnerability Database Update'
     required: false
     default: "false"
-  ignorePackageNames:
+  ignore-package-names:
     description: 'Ignore Package names when scanning... e.g. input: dpkg,tar,bash,...'
     required: false
-  ignoreCves:
+  ignore-cves:
     description: 'Ignore CVES when scanning... e.g. input: CVE-2022-1271,CVE-2022-3715,CVE-2022-1664,...'
     required: false
   
