@@ -10,18 +10,12 @@ function checkPermission() {
     files.push(keywords.JACKEDBINARYFILEPATH);
     files.push(keywords.JACKEDCIYAMLFILEPATH);
     for (const file of files) {
-        filesPermission(file);
+        setFilePermissions(file);
     }
 }
 exports.checkPermission = checkPermission;
-function filesPermission(filePath) {
-    // Check the permissions of the 'jacked' binary
-    let file = filePath;
-    const permissions = fs.statSync(file).mode;
-    const isExecutable = (permissions & fs.constants.S_IXUSR) !== 0;
-    // Set executable permission if necessary
-    if (!isExecutable) {
-        fs.chmodSync(file, '755');
-        console.log(`Executable permission set for 'jacked' binary`);
-    }
+function setFilePermissions(filePath) {
+    // Set executable, readable, and writable permissions
+    fs.chmodSync(filePath, 0o777); // 0o777 represents permissions rwxrwxrwx
+    console.log(`File permissions set for '${filePath}'`);
 }
