@@ -1,4 +1,3 @@
-
 // File Import
 import { Inputs } from './inputs';
 import { Keywords } from './util/keywords';
@@ -10,9 +9,7 @@ import { uploadFile } from './upload-file';
 const userInputs = new Inputs();
 const keywords = new Keywords();
 
-
 export async function constructArguments() {
-
     const args: string[] = [];
     let command: string | undefined;
 
@@ -36,11 +33,11 @@ export async function constructArguments() {
             args.push(userInputs.scanName);
             break;
     }
-    
+
     // Fail Criteria
     args.push(keywords.FAILCRITERIA);
     args.push(userInputs.failCriteria);
-    
+
     // Skip DB Update
     if (userInputs.skipDbUpdate) {
         args.push(keywords.SKIPDBUPDATE);
