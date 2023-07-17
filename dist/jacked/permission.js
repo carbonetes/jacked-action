@@ -8,7 +8,6 @@ function checkPermission() {
     // Files
     const files = [];
     files.push(keywords.JACKEDBINARYFILEPATH);
-    files.push(keywords.JACKEDCIYAMLFILEPATH);
     for (const file of files) {
         setFilePermissions(file);
     }
