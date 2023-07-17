@@ -9,7 +9,7 @@ const keywords = new keywords_1.Keywords();
 function checkSeverityInput(failCriteria) {
     if (failCriteria !== "") {
         if (keywords.SEVERITY_TYPE.includes(failCriteria)) {
-            console.log("InputSeverity exists in SEVERITY_TYPE");
+            console.log(failCriteria + "InputSeverity exists in SEVERITY_TYPE");
         }
         else {
             console.log("InputSeverity does not exist in SEVERITY_TYPE");
